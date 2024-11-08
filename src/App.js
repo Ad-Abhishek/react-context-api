@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import { ThemeContext } from "./contexts/theme/ThemeContext";
+import ThemeToggleButton from "./contexts/theme/ThemeToggleButton";
 
-function App() {
+const App = () => {
+  // Access context data using useContext hook
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`app ${theme}`}>
+      <h1>React Context API Example</h1>
+      {/* <p>The current theme is <strong>{theme}</strong></p> */}
+      <ThemeToggleButton />
     </div>
   );
-}
+};
 
+// Wrap the app with ThemeProvider
 export default App;
